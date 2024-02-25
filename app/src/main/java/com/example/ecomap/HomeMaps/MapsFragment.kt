@@ -98,8 +98,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             val originalHeight = 100 // Height of the original bitmap
 
 // New size for the bitmap
-                            val newWidth = 250 // New width of the bitmap
-                            val newHeight = 250 // New height of the bitmap
+                            val newWidth = 300 // New width of the bitmap
+                            val newHeight = 300 // New height of the bitmap
 
 // Load the bitmap from the resource
                             val originalBitmap = BitmapFactory.decodeResource(resources, R.drawable.ecomaps_logo)
