@@ -8,7 +8,8 @@ import com.example.ecomap.R
 class Home : AppCompatActivity() {
 
     private var name: String = ""
-    private var city: String = ""
+    private var longitude: String = ""
+    private var latitude: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,9 +17,18 @@ class Home : AppCompatActivity() {
 
         val bundle = intent.extras
         name = bundle?.getString("name")!!
-        city = bundle?.getString("city")!!
+        longitude = bundle?.getString("longitude")!!
+        latitude = bundle?.getString("latitude")!!
+
+        val coords = arrayOf(longitude, latitude)
+
+        val fragment = MapsFragment.newInstance(coords)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.maps, fragment)
+            .commit()
 
 
-        Log.d("HomeIntent", name+" "+city)
+        Log.d("HomeIntent", name+" "+longitude)
+
     }
 }

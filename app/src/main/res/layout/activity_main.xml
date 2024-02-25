@@ -37,6 +37,7 @@
 
     <EditText
         android:id="@+id/name"
+        android:textColor="@color/white"
         android:background="@drawable/neonbackgroundborder"
         android:padding="10dp"
         android:layout_width="200dp"
@@ -50,18 +51,34 @@
         app:layout_constraintVertical_bias=".5"/>
 
     <EditText
-        android:id="@+id/city"
+        android:id="@+id/longitude"
+        android:textColor="@color/white"
         android:background="@drawable/neonbackgroundborder"
         android:padding="10dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:hint="City"
+        android:hint="Longitude"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias=".6"/>
+
+    <EditText
+        android:id="@+id/latitude"
+        android:textColor="@color/white"
+        android:background="@drawable/neonbackgroundborder"
+        android:padding="10dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Latitude"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".7"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="200dp"

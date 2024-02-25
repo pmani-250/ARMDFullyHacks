@@ -1,35 +1,21 @@
 package com.example.ecomap.HomeMaps
-
-import androidx.fragment.app.Fragment
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.ecomap.R
-
 import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-class MapsFragment : Fragment() {
+class MapsFragment : Fragment(), OnMapReadyCallback {
 
-    private val callback = OnMapReadyCallback { googleMap ->
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-        val california = LatLng(33.0, -117.0)
-        googleMap.addMarker(MarkerOptions().position(california).title("Marker in California"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(california))
-    }
+    private var city: Array<String>? = null
+    private lateinit var googleMap: GoogleMap
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +27,34 @@ class MapsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
+
+        city = arguments?.getStringArray(ARG_CITY)
+
+        val mapFragment =
+            childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+    }
+
+    override fun onMapReady(gMap: GoogleMap?) {
+        gMap?.let { googleMap ->
+            this.googleMap = googleMap
+            city?.let { city ->
+                val california = LatLng(city[1].toDouble(), city[0].toDouble())
+                googleMap.addMarker(MarkerOptions().position(california).title("Marker in $california"))
+                googleMap.moveCamera(CameraUpdateFactory.newLatLng(california))
+            }
+        }
+    }
+
+    companion object {
+        private const val ARG_CITY = "coords"
+
+        fun newInstance(city: Array<String>): MapsFragment {
+            val fragment = MapsFragment()
+            val args = Bundle()
+            args.putStringArray(ARG_CITY, city)
+            fragment.arguments = args
+            return fragment
+        }
     }
 }

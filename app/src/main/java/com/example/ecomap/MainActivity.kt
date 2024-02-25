@@ -11,14 +11,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var search: Button
     private lateinit var name: EditText
-    private lateinit var city: EditText
+    private lateinit var longitude: EditText
+    private lateinit var latitude: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         search = findViewById(R.id.submit)
         name = findViewById(R.id.name)
-        city = findViewById(R.id.city)
+        longitude = findViewById(R.id.longitude)
+        latitude = findViewById(R.id.latitude)
 
         setSubmitBtn()
     }
@@ -26,11 +28,13 @@ class MainActivity : AppCompatActivity() {
     private fun setSubmitBtn() {
         search.setOnClickListener {
             val nameText = name.text.toString()
-            val cityText = city.text.toString()
+            val long = longitude.text.toString()
+            val lat = latitude.text.toString()
 
             val intent = Intent(this, Home::class.java).apply {
                 putExtra("name", nameText)
-                putExtra("city", cityText)
+                putExtra("longitude", long)
+                putExtra("latitude", lat)
             }
             startActivity(intent)
         }
