@@ -3,7 +3,9 @@ package com.example.ecomap.HomeMaps
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import com.example.ecomap.R
+import org.w3c.dom.Text
 
 class Home : AppCompatActivity() {
 
@@ -19,6 +21,9 @@ class Home : AppCompatActivity() {
         name = bundle?.getString("name")!!
         longitude = bundle?.getString("longitude")!!
         latitude = bundle?.getString("latitude")!!
+
+        val nameText = findViewById<TextView>(R.id.username)
+        nameText.text = name
 
         val coords = arrayOf(longitude, latitude)
 

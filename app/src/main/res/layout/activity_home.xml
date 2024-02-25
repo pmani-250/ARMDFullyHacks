@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".HomeMaps.Home">
 
+
     <fragment
         android:id="@+id/maps"
         android:name="com.example.ecomap.HomeMaps.MapsFragment"
@@ -15,7 +16,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/username"
+            android:elevation="10dp"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/purple"/>
+    </fragment>
 
 
 
