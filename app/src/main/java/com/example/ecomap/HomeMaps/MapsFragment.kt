@@ -27,7 +27,7 @@ import java.io.InputStream
 import java.io.InputStreamReader
 
 
-data class WaterData(val name: String, val status: String, val drinkable: String)
+data class WaterData(val name: String, val status: String, val drinkable: String, val type: String, val long: String, val lat: String)
 
 class MapsFragment : Fragment(), OnMapReadyCallback {
 
@@ -88,27 +88,36 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             val newWater = WaterData(
                                 location[6],
                                 location[17],
-                                location[25]
+                                location[25],
+                                location[29],
+                                location[12],
+                                location[11]
                             )
 
                             waterList.add(newWater)
 
-                            // Original size of the bitmap
-                            val originalWidth = 100 // Width of the original bitmap
-                            val originalHeight = 100 // Height of the original bitmap
 
-// New size for the bitmap
+                            // New size for the bitmap
                             val newWidth = 300 // New width of the bitmap
                             val newHeight = 300 // New height of the bitmap
 
-// Load the bitmap from the resource
+                            // Load the bitmap from the resource
                             val originalBitmap = BitmapFactory.decodeResource(resources, R.drawable.ecomaps_logo)
 
-// Resize the bitmap to the new dimensions
+                            // Resize the bitmap to the new dimensions
                             val resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, false)
 
-// Convert the resized bitmap to a BitmapDescriptor
+                            // Convert the resized bitmap to a BitmapDescriptor
                             val icon = BitmapDescriptorFactory.fromBitmap(resizedBitmap)
+
+                            // Load the bitmap from the resource
+                            val originalBitmap2 = BitmapFactory.decodeResource(resources, R.drawable.ecomaps_logo2)
+
+                            // Resize the bitmap to the new dimensions
+                            val resizedBitmap2 = Bitmap.createScaledBitmap(originalBitmap2, newWidth, newHeight, false)
+
+                            // Convert the resized bitmap to a BitmapDescriptor
+                            val icon2 = BitmapDescriptorFactory.fromBitmap(resizedBitmap2)
 
 
 
@@ -133,9 +142,12 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                                 val index = markers.indexOf(clickedMarker)
                                     // Inflate the other layout containing the TextView
                                     display.visibility = View.VISIBLE
-                                    display.text = "${waterList[index].name}\nIssue: ${waterList[index].status}\nDrinkable: ${waterList[index].drinkable}"
+                                    display.text = "${waterList[index].name}\nType: ${waterList[index].type}\nIssue: ${waterList[index].status}\nDrinkable: ${waterList[index].drinkable}\nLong: ${waterList[index].long}\nLat: ${waterList[index].lat}"
+
+                                clickedMarker.setIcon(icon2)
                                 true // Return true to consume the event
                             }
+
                         }
                     }
                 }
