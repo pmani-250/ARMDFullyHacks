@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EcoMap</string>
+    <string name="googlemaps_apikey">AIzaSyCI0GknSP5AaMqkAxTHtTsgG8KGgKkRUr8</string>
 </resources>

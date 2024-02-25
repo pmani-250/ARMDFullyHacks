@@ -6,8 +6,7 @@
             <!-- Apply blur effect to the stroke -->
             <stroke
                 android:width="4dp"
-                android:color="#96F3FB"
-                android:blurRadius="4dp" /> <!-- Adjust blur radius as needed -->
+                android:color="#96F3FB"/> <!-- Adjust blur radius as needed -->
             <!-- Border radius -->
             <corners android:radius="8dp" /> <!-- Adjust the radius as needed -->
         </shape>
