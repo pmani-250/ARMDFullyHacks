@@ -51,7 +51,7 @@
         android:id="@+id/water_stats"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Search for:\nBodies of water\nIssues (Warning, Danger, etc)\nDrinkable (Yes, No)"
+        android:text="Search for:\nBodies of water\nIssues (Warning, Danger, etc)\nDrinkable (Yes, No)\nLongitude\nLatitude"
         android:textSize="15dp"
         android:textColor="@color/white"
         android:fontFamily="@font/poppins"
