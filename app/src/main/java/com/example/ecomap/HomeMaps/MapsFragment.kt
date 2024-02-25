@@ -78,13 +78,13 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             val california =
                                 LatLng(location[11].toDouble(), location[12].toDouble())
 
-                            waterList.add(
-                                WaterData(
+                            val newWater = WaterData(
                                 location[6],
                                 location[17],
                                 location[25]
                             )
-                            )
+
+                            waterList.add(newWater)
 
 //                            val status = location[17]
 //                            val name = location[6]
@@ -92,7 +92,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
                             Log.d("Coords", location[12]+" "+location[11])
                             val marker = googleMap.addMarker(
-                                MarkerOptions().position(california).title("${waterList.last().name}")
+                                MarkerOptions().position(california).title("${newWater.name}")
                             )
                             markers.add(marker)
 
@@ -107,19 +107,12 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
                             googleMap.setOnMarkerClickListener { clickedMarker ->
                                 val index = markers.indexOf(clickedMarker)
                                     // Inflate the other layout containing the TextView
+                                    display.visibility = View.VISIBLE
                                     display.text = "${waterList[index].name}\nIssue: ${waterList[index].status}\nDrinkable: ${waterList[index].drinkable}"
                                 true // Return true to consume the event
                             }
                         }
                     }
-
-//                    if (city.size >= 2) {
-//                        val california = LatLng(city[1].toDouble(), city[0].toDouble())
-//                        googleMap.addMarker(MarkerOptions().position(california).title("Marker in $california"))
-//                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(california, zoomLevel))
-//                    } else {
-//                        Log.e("MapsFragment", "City coordinates are invalid.")
-//                    }
                 }
             }
         } catch (e: Exception) {

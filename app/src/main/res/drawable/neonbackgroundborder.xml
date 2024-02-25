@@ -1,5 +1,13 @@
 <!-- edittext_background.xml -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Layer for solid white background -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#000000" /> <!-- White color -->
+            <!-- Border radius -->
+            <corners android:radius="10dp" /> <!-- Adjust the radius as needed -->
+        </shape>
+    </item>
     <!-- Layer for blurred stroke -->
     <item>
         <shape android:shape="rectangle">
@@ -7,14 +15,6 @@
             <stroke
                 android:width="4dp"
                 android:color="#96F3FB"/> <!-- Adjust blur radius as needed -->
-            <!-- Border radius -->
-            <corners android:radius="8dp" /> <!-- Adjust the radius as needed -->
-        </shape>
-    </item>
-    <!-- Layer for solid background -->
-    <item android:top="4dp" android:left="4dp" android:right="4dp" android:bottom="4dp">
-        <shape android:shape="rectangle">
-            <!-- Background color -->
             <!-- Border radius -->
             <corners android:radius="8dp" /> <!-- Adjust the radius as needed -->
         </shape>
