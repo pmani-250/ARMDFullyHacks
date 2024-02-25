@@ -1,5 +1,7 @@
 package com.example.ecomap.HomeMaps
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +16,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
@@ -90,13 +93,31 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
                             waterList.add(newWater)
 
-//                            val status = location[17]
-//                            val name = location[6]
-//                            val drinkable = location[25]
+                            // Original size of the bitmap
+                            val originalWidth = 100 // Width of the original bitmap
+                            val originalHeight = 100 // Height of the original bitmap
+
+// New size for the bitmap
+                            val newWidth = 250 // New width of the bitmap
+                            val newHeight = 250 // New height of the bitmap
+
+// Load the bitmap from the resource
+                            val originalBitmap = BitmapFactory.decodeResource(resources, R.drawable.ecomaps_logo)
+
+// Resize the bitmap to the new dimensions
+                            val resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, false)
+
+// Convert the resized bitmap to a BitmapDescriptor
+                            val icon = BitmapDescriptorFactory.fromBitmap(resizedBitmap)
+
+
 
                             Log.d("Coords", location[12]+" "+location[11])
                             val marker = googleMap.addMarker(
-                                MarkerOptions().position(california).title("${newWater.name}")
+                                MarkerOptions()
+                                    .position(california)
+                                    .title("${newWater.name}")
+                                    .icon(icon)
                             )
                             markers.add(marker)
 

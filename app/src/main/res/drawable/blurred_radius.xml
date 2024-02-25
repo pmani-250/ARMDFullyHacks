@@ -1,0 +1,22 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Layer for the blurred border -->
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Solid color background -->
+            <solid android:color="@android:color/black" />
+            <!-- Blur effect to create the border -->
+            <stroke
+                android:width="8dp"
+            android:color="@color/cornsilk"/>
+
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <!-- Layer for the content background (if any) -->
+    <item android:top="8dp" android:left="8dp" android:right="8dp" android:bottom="8dp">
+        <shape android:shape="rectangle">
+            <!-- Background color of the content -->
+            <solid android:color="@android:color/transparent" /> <!-- Adjust content background color as needed -->
+        </shape>
+    </item>
+</layer-list>
