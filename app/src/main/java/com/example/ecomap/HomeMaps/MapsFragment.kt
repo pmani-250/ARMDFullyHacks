@@ -15,6 +15,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import java.io.BufferedReader
@@ -54,6 +55,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(gMap: GoogleMap?) {
         val zoomLevel = 10f
+
+        val mapStyleOptions = MapStyleOptions.loadRawResourceStyle(context, R.raw.map_styles)
+        gMap?.setMapStyle(mapStyleOptions)
 
         try {
             val inputStream = requireContext().assets.open("bloom-report.csv")
